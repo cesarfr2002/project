@@ -10,17 +10,17 @@ export default function About() {
         {
           icon: Server,
           title: 'Backend Development',
-          description: 'Diseño y desarrollo de APIs RESTful con Python, FastAPI y Django. Integración de servicios y manejo de datos.'
+          description: 'Desarrollo de APIs que soportan miles de solicitudes por segundo, con tiempos de respuesta rápidos y alta disponibilidad.'
         },
         {
           icon: Brain,
           title: 'Machine Learning',
-          description: 'Implementación de modelos de ML para análisis predictivo y procesamiento de datos usando scikit-learn y TensorFlow.'
+          description: 'Implementación de modelos predictivos para mejorar la toma de decisiones y automatizar procesos.'
         },
         {
           icon: Database,
           title: 'Gestión de Datos',
-          description: 'Experiencia con PostgreSQL y MongoDB. Diseño de esquemas y optimización de consultas.'
+          description: 'Diseño y optimización de bases de datos para manejar grandes volúmenes de datos con eficiencia.'
         }
       ]
     },
@@ -30,32 +30,44 @@ export default function About() {
         {
           icon: Code,
           title: 'Stack Principal',
-          description: 'Python | FastAPI | Django | SQL | Git | Docker'
+          description: 'Python, PostgreSQL, Redis, Docker, AWS'
         },
         {
           icon: Boxes,
           title: 'Data Science Stack',
-          description: 'NumPy | Pandas | Scikit-learn | TensorFlow'
+          description: 'NumPy, Pandas, scikit-learn, TensorFlow'
         },
         {
           icon: Terminal,
-          title: 'Herramientas',
-          description: 'VSCode | Jupyter | Postman | Linux'
+          title: 'DevOps & Monitoring',
+          description: 'CI/CD, Prometheus, Grafana, Testing, Logging'
         }
       ]
     }
   ];
 
   const stats = [
-    { value: '2+', label: 'Años de Experiencia' },
-    { value: '10+', label: 'Proyectos Backend' },
-    { value: '5+', label: 'Modelos ML Implementados' },
+    { value: '2+', label: 'Años de experiencia' },
+    { value: '10+', label: 'Proyectos completados' },
+    { value: '5+', label: 'Modelos ML implementados' },
   ];
 
   const certifications = [
-    { name: 'Professional Python Developer', issuer: 'DataCamp' },
-    { name: 'Machine Learning Engineering', issuer: 'Platzi' },
-    { name: 'Backend Development with FastAPI', issuer: 'Udemy' },
+    { 
+      name: 'Professional Python Developer', 
+      issuer: 'DataCamp',
+      details: 'Especialización en desarrollo avanzado con Python'
+    },
+    { 
+      name: 'Machine Learning Engineering', 
+      issuer: 'Platzi',
+      details: 'Enfoque en implementación de modelos ML'
+    },
+    { 
+      name: 'Backend Development with FastAPI', 
+      issuer: 'Udemy',
+      details: 'Desarrollo de APIs con FastAPI'
+    },
   ];
 
   const container = {
@@ -105,19 +117,16 @@ export default function About() {
             </div>
             <div className="max-w-4xl mx-auto space-y-6">
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Desarrollador Backend apasionado por la innovación tecnológica y la inteligencia artificial. 
-                Con 2 años de experiencia, me especializo en el diseño e implementación de APIs robustas y 
-                la integración de soluciones de Machine Learning que transforman datos en valor tangible.
+                Desarrollador Backend apasionado por la tecnología y la inteligencia artificial. 
+                Con 2 años de experiencia, me especializo en crear APIs robustas y soluciones de Machine Learning.
               </p>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Mi enfoque combina el desarrollo backend tradicional con las últimas tecnologías en IA, 
-                permitiéndome crear servicios que no solo son eficientes y escalables, sino que también 
-                incorporan capacidades predictivas y de automatización inteligente.
+                Mi enfoque combina el desarrollo backend con las últimas tecnologías en IA, 
+                permitiéndome crear servicios eficientes y escalables con capacidades predictivas.
               </p>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Actualmente, me dedico a perfeccionar la integración de modelos de Machine Learning en 
-                arquitecturas de microservicios, explorando constantemente nuevas formas de optimizar 
-                el rendimiento y la precisión de las soluciones que desarrollo.
+                Actualmente, me dedico a integrar modelos de Machine Learning en arquitecturas de microservicios, 
+                optimizando el rendimiento y la precisión de las soluciones que desarrollo.
               </p>
             </div>
 
@@ -134,7 +143,7 @@ export default function About() {
                     <BarChart2 className="h-8 w-8 text-primary mb-4" />
                     <h4 className="font-semibold text-lg mb-2">Análisis Predictivo</h4>
                     <p className="text-sm text-muted-foreground">
-                      Implementación de modelos ML con 85% de precisión en predicciones
+                      Implementación de modelos ML con alta precisión en predicciones
                     </p>
                   </CardContent>
                 </Card>
@@ -150,7 +159,7 @@ export default function About() {
                     <Server className="h-8 w-8 text-primary mb-4" />
                     <h4 className="font-semibold text-lg mb-2">APIs Eficientes</h4>
                     <p className="text-sm text-muted-foreground">
-                      Desarrollo de APIs REST con tiempos de respuesta optimizados
+                      Desarrollo de APIs que soportan miles de solicitudes por segundo, con tiempos de respuesta rápidos y alta disponibilidad.
                     </p>
                   </CardContent>
                 </Card>
@@ -166,7 +175,7 @@ export default function About() {
                     <Workflow className="h-8 w-8 text-primary mb-4" />
                     <h4 className="font-semibold text-lg mb-2">Integración ML-API</h4>
                     <p className="text-sm text-muted-foreground">
-                      Experiencia en integración de modelos ML en servicios web
+                      Experiencia en integrar modelos ML en servicios web
                     </p>
                   </CardContent>
                 </Card>

@@ -17,17 +17,17 @@ export default function Hero({ setActiveSection }: HeroProps) {
   const [commandIndex, setCommandIndex] = useState(0);
 
   const commands = [
-    { text: '> Loading profile...', delay: 500 },
-    { text: '> Initializing skills...', delay: 1000 },
+    { text: '> Cargando perfil...', delay: 500 },
+    { text: '> Inicializando habilidades...', delay: 1000 },
     { text: '> Backend: Python, Django, FastAPI', delay: 1500 },
-    { text: '> Database: PostgreSQL, MongoDB', delay: 2000 },
-    { text: '> Profile loaded successfully!', delay: 2500 },
+    { text: '> Base de datos: PostgreSQL, MongoDB', delay: 2000 },
+    { text: '> Perfil cargado con éxito!', delay: 2500 },
   ];
 
   const additionalCommands = [
-    { text: '> Setting up environment...', delay: 3000 },
-    { text: '> Fetching latest projects...', delay: 3500 },
-    { text: '> Projects ready for review!', delay: 4000 },
+    { text: '> Configurando entorno...', delay: 3000 },
+    { text: '> Obteniendo proyectos recientes...', delay: 3500 },
+    { text: '> Proyectos listos para revisión!', delay: 4000 },
   ];
 
   const allCommands = [...commands, ...additionalCommands];
@@ -148,7 +148,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
                     <img
                       src={profileImage}
                       alt="César Franco"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-[center_left_-12px]" // Ajustado para centrar mejor
                     />
                   </div>
                 </motion.div>

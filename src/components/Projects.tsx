@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Github, Award, Calendar, Clock, Users, Code2 } from 'lucide-react';
+import { Github, Award, Calendar, Clock, Users, Code2, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useState } from 'react';
@@ -12,7 +12,7 @@ export default function Projects() {
   const projects = [
     {
       title: 'Service Bot - Finalist HackHathon LLM',
-      description: 'Solución multiagente premiada que unifica y automatiza la gestión de tickets de atención al cliente a través de diferentes canales de comunicación. Integra LLMs para procesamiento de lenguaje natural y automatización inteligente.',
+      description: 'Solución que automatiza la gestión de tickets de atención al cliente a través de diferentes canales de comunicación.',
       image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&auto=format&fit=crop&q=60',
       tags: ['Python', 'LangChain', 'FastAPI', 'Next.js', 'TypeScript', 'LLMs', 'Redis'],
       category: 'Inteligencia Artificial',
@@ -23,12 +23,12 @@ export default function Projects() {
       isAward: true,
       benefits: {
         users: [
-          'Respuesta instantánea 24/7 a consultas de clientes',
-          'Resolución más rápida de problemas comunes',
+          'Respuesta instantánea a consultas de clientes',
+          'Resolución rápida de problemas comunes',
           'Experiencia personalizada y consistente'
         ],
         developers: [
-          'Reducción del 70% en tiempo de desarrollo de integraciones',
+          'Reducción en tiempo de desarrollo de integraciones',
           'Arquitectura escalable y mantenible',
           'Sistema modular fácil de extender'
         ]
@@ -36,7 +36,7 @@ export default function Projects() {
     },
     {
       title: 'Beauty AI Assistant',
-      description: 'Asistente virtual inteligente para el sector belleza que utiliza visión por computadora y procesamiento de voz. Proporciona recomendaciones personalizadas de productos mediante modelos de machine learning, integra contenido relacionado de YouTube y genera sugerencias predictivas basadas en los patrones de interés del usuario.',
+      description: 'Asistente virtual para el sector belleza que proporciona recomendaciones personalizadas de productos.',
       image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&auto=format&fit=crop&q=60',
       tags: ['Python', 'TensorFlow', 'OpenCV', 'YouTube API', 'Speech Recognition', 'Machine Learning'],
       category: 'Computer Vision',
@@ -183,32 +183,6 @@ export default function Projects() {
                 <CardContent className="space-y-4">
                   <p className="text-muted-foreground text-lg">{project.description}</p>
                   
-                  <div className="space-y-4 mt-4">
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2 text-primary">
-                        <Users className="h-5 w-5" />
-                        <h4 className="font-semibold">Beneficios para usuarios:</h4>
-                      </div>
-                      <ul className="list-disc list-inside text-sm text-muted-foreground pl-2">
-                        {project.benefits.users.map((benefit, index) => (
-                          <li key={index}>{benefit}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2 text-primary">
-                        <Code2 className="h-5 w-5" />
-                        <h4 className="font-semibold">Beneficios técnicos:</h4>
-                      </div>
-                      <ul className="list-disc list-inside text-sm text-muted-foreground pl-2">
-                        {project.benefits.developers.map((benefit, index) => (
-                          <li key={index}>{benefit}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <Tooltip key={tag}>
@@ -245,6 +219,64 @@ export default function Projects() {
             </TooltipProvider>
           ))}
         </motion.div>
+
+        {/* New Benefits Showcase Section */}
+        <motion.div
+          variants={item}
+          className="mt-24 px-4"
+        >
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">
+              Impacto y Beneficios
+            </h3>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Mis soluciones están diseñadas para generar valor real, tanto para usuarios finales como para equipos técnicos
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            {/* User Benefits */}
+            <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-8 rounded-2xl border border-primary/20 backdrop-blur-sm">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-primary/20 rounded-xl">
+                  <Users className="h-8 w-8 text-primary" />
+                </div>
+                <h4 className="text-2xl font-semibold text-primary">Para Usuarios</h4>
+              </div>
+              <ul className="space-y-4">
+                {projects[0].benefits.users.map((benefit, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <div className="mt-1">
+                      <ChevronRight className="h-5 w-5 text-primary" />
+                    </div>
+                    <p className="text-lg text-muted-foreground">{benefit}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Technical Benefits */}
+            <div className="bg-gradient-to-br from-blue-600/10 via-blue-600/5 to-transparent p-8 rounded-2xl border border-blue-600/20 backdrop-blur-sm">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-blue-600/20 rounded-xl">
+                  <Code2 className="h-8 w-8 text-blue-600" />
+                </div>
+                <h4 className="text-2xl font-semibold text-blue-600">Para Desarrolladores</h4>
+              </div>
+              <ul className="space-y-4">
+                {projects[0].benefits.developers.map((benefit, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <div className="mt-1">
+                      <ChevronRight className="h-5 w-5 text-blue-600" />
+                    </div>
+                    <p className="text-lg text-muted-foreground">{benefit}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </motion.div>
+
       </motion.div>
     </div>
   );
