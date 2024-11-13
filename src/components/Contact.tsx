@@ -61,23 +61,29 @@ export default function Contact() {
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 className="space-y-6"
+                action="/success"
                 onSubmit={(e) => {
                   e.preventDefault();
                   setIsSubmitting(true);
-                  const form = e.target as HTMLFormElement;
+                  const formData = new FormData(e.target as HTMLFormElement);
+                  
                   fetch("/", {
                     method: "POST",
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: new URLSearchParams(new FormData(form) as any).toString(),
+                    headers: {
+                      "Content-Type": "application/x-www-form-urlencoded",
+                      "Accept": "application/json",
+                    },
+                    body: new URLSearchParams([...formData] as any).toString(),
                   })
                     .then(() => {
                       setIsSubmitting(false);
-                      form.reset();
+                      (e.target as HTMLFormElement).reset();
                       alert("¡Mensaje enviado con éxito!");
                     })
                     .catch((error) => {
+                      console.error(error);
                       setIsSubmitting(false);
-                      alert("Error al enviar el mensaje: " + error);
+                      alert("Error al enviar el mensaje. Por favor, intenta nuevamente.");
                     });
                 }}
               >
