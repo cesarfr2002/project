@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Github, Award, Calendar, Clock, Users, Code2, ChevronRight } from 'lucide-react';
+import { Github, Award, Calendar, Clock, Users, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useState } from 'react';
@@ -220,7 +220,7 @@ export default function Projects() {
           ))}
         </motion.div>
 
-        {/* New Benefits Showcase Section */}
+        {/* Unified Benefits Showcase Section */}
         <motion.div
           variants={item}
           className="mt-24 px-4"
@@ -230,21 +230,22 @@ export default function Projects() {
               Impacto y Beneficios
             </h3>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Mis soluciones están diseñadas para generar valor real, tanto para usuarios finales como para equipos técnicos
+              Mis soluciones están diseñadas para generar valor real, tanto para usuarios finales como para equipos técnicos. 
+              Aquí hay algunos de los beneficios clave que mis proyectos ofrecen:
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            {/* User Benefits */}
+            {/* Combined Benefits */}
             <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-8 rounded-2xl border border-primary/20 backdrop-blur-sm">
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-primary/20 rounded-xl">
                   <Users className="h-8 w-8 text-primary" />
                 </div>
-                <h4 className="text-2xl font-semibold text-primary">Para Usuarios</h4>
+                <h4 className="text-2xl font-semibold text-primary">Beneficios para Usuarios y Desarrolladores</h4>
               </div>
               <ul className="space-y-4">
-                {projects[0].benefits.users.map((benefit, index) => (
+                {projects.flatMap(project => project.benefits.users).map((benefit, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <div className="mt-1">
                       <ChevronRight className="h-5 w-5 text-primary" />
@@ -252,22 +253,10 @@ export default function Projects() {
                     <p className="text-lg text-muted-foreground">{benefit}</p>
                   </li>
                 ))}
-              </ul>
-            </div>
-
-            {/* Technical Benefits */}
-            <div className="bg-gradient-to-br from-blue-600/10 via-blue-600/5 to-transparent p-8 rounded-2xl border border-blue-600/20 backdrop-blur-sm">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 bg-blue-600/20 rounded-xl">
-                  <Code2 className="h-8 w-8 text-blue-600" />
-                </div>
-                <h4 className="text-2xl font-semibold text-blue-600">Para Desarrolladores</h4>
-              </div>
-              <ul className="space-y-4">
-                {projects[0].benefits.developers.map((benefit, index) => (
+                {projects.flatMap(project => project.benefits.developers).map((benefit, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <div className="mt-1">
-                      <ChevronRight className="h-5 w-5 text-blue-600" />
+                      <ChevronRight className="h-5 w-5 text-primary" />
                     </div>
                     <p className="text-lg text-muted-foreground">{benefit}</p>
                   </li>
