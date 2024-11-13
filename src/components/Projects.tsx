@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Github, Award, Calendar, Clock, Users, ChevronRight } from 'lucide-react';
+import { Github, Award, Calendar, Clock, ChevronRight, Sparkles, Target, Workflow } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useState } from 'react';
@@ -220,49 +220,86 @@ export default function Projects() {
           ))}
         </motion.div>
 
-        {/* Unified Benefits Showcase Section */}
+        {/* Modern Benefits Showcase Section */}
         <motion.div
           variants={item}
-          className="mt-24 px-4"
+          className="mt-24"
         >
           <div className="text-center mb-16">
             <h3 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">
               Impacto y Beneficios
             </h3>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Mis soluciones están diseñadas para generar valor real, tanto para usuarios finales como para equipos técnicos. 
-              Aquí hay algunos de los beneficios clave que mis proyectos ofrecen:
+              Soluciones diseñadas para generar valor real y resultados medibles
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            {/* Combined Benefits */}
-            <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-8 rounded-2xl border border-primary/20 backdrop-blur-sm">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 bg-primary/20 rounded-xl">
-                  <Users className="h-8 w-8 text-primary" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Innovación */}
+            <motion.div
+              variants={item}
+              className="group relative p-8 rounded-2xl border border-primary/20 hover:border-primary/40 transition-all duration-300 backdrop-blur-sm"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/[0.02] to-transparent rounded-2xl" />
+              <div className="relative">
+                <div className="w-12 h-12 mb-6 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <Sparkles className="h-6 w-6 text-primary" />
                 </div>
-                <h4 className="text-2xl font-semibold text-primary">Beneficios para Usuarios y Desarrolladores</h4>
+                <h4 className="text-xl font-semibold mb-4">Innovación Tecnológica</h4>
+                <ul className="space-y-3">
+                  {projects[0].benefits.developers.slice(0, 3).map((benefit, index) => (
+                    <li key={index} className="text-muted-foreground flex items-start gap-2">
+                      <ChevronRight className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-4">
-                {projects.flatMap(project => project.benefits.users).map((benefit, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <div className="mt-1">
-                      <ChevronRight className="h-5 w-5 text-primary" />
-                    </div>
-                    <p className="text-lg text-muted-foreground">{benefit}</p>
-                  </li>
-                ))}
-                {projects.flatMap(project => project.benefits.developers).map((benefit, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <div className="mt-1">
-                      <ChevronRight className="h-5 w-5 text-primary" />
-                    </div>
-                    <p className="text-lg text-muted-foreground">{benefit}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            </motion.div>
+
+            {/* Impacto Usuario */}
+            <motion.div
+              variants={item}
+              className="group relative p-8 rounded-2xl border border-blue-600/20 hover:border-blue-600/40 transition-all duration-300 backdrop-blur-sm"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-blue-600/[0.02] to-transparent rounded-2xl" />
+              <div className="relative">
+                <div className="w-12 h-12 mb-6 rounded-xl bg-blue-600/10 flex items-center justify-center">
+                  <Target className="h-6 w-6 text-blue-600" />
+                </div>
+                <h4 className="text-xl font-semibold mb-4">Impacto al Usuario</h4>
+                <ul className="space-y-3">
+                  {projects[0].benefits.users.slice(0, 3).map((benefit, index) => (
+                    <li key={index} className="text-muted-foreground flex items-start gap-2">
+                      <ChevronRight className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* Eficiencia */}
+            <motion.div
+              variants={item}
+              className="group relative p-8 rounded-2xl border border-indigo-600/20 hover:border-indigo-600/40 transition-all duration-300 backdrop-blur-sm"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/5 via-indigo-600/[0.02] to-transparent rounded-2xl" />
+              <div className="relative">
+                <div className="w-12 h-12 mb-6 rounded-xl bg-indigo-600/10 flex items-center justify-center">
+                  <Workflow className="h-6 w-6 text-indigo-600" />
+                </div>
+                <h4 className="text-xl font-semibold mb-4">Eficiencia Operativa</h4>
+                <ul className="space-y-3">
+                  {projects[1].benefits.developers.slice(0, 3).map((benefit, index) => (
+                    <li key={index} className="text-muted-foreground flex items-start gap-2">
+                      <ChevronRight className="h-5 w-5 text-indigo-600 shrink-0 mt-0.5" />
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
 
