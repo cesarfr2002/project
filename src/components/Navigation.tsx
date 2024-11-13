@@ -1,6 +1,7 @@
-import { Terminal, Code2, User, Mail } from 'lucide-react';
+import { Terminal, Code2, User, Mail, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 
 interface NavigationProps {
   activeSection: string;
@@ -8,6 +9,8 @@ interface NavigationProps {
 }
 
 export default function Navigation({ activeSection, setActiveSection }: NavigationProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
   const navItems = [
     { id: 'home', icon: Terminal, label: 'Inicio' },
     { id: 'about', icon: User, label: 'Sobre Mí' },
@@ -31,12 +34,14 @@ export default function Navigation({ activeSection, setActiveSection }: Navigati
               type: "spring",
               stiffness: 300 
             }}
+            onClick={() => setActiveSection('home')}
             className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-500 to-violet-500 cursor-pointer hover:opacity-80 transition-opacity"
           >
             {'<'}César Franco{'>'}
           </motion.span>
           
-          <div className="flex space-x-4">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex space-x-4">
             {navItems.map(({ id, icon: Icon, label }) => (
               <motion.button
                 key={id}
@@ -84,8 +89,52 @@ export default function Navigation({ activeSection, setActiveSection }: Navigati
               </motion.button>
             ))}
           </div>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+            className="fixed top-[5rem] right-0 w-64 h-screen bg-background border-l border-border/40 md:hidden"
+          >
+            <div className="flex flex-col p-4 space-y-4">
+              {navItems.map(({ id, icon: Icon, label }) => (
+                <motion.button
+                  key={id}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    setActiveSection(id);
+                    setIsMenuOpen(false);
+                  }}
+                  className={cn(
+                    'px-5 py-2.5 rounded-xl transition-all duration-300',
+                    'flex items-center space-x-2.5 relative overflow-hidden w-full',
+                    activeSection === id 
+                      ? 'text-primary font-medium bg-primary/10' 
+                      : 'text-muted-foreground hover:bg-primary/15 hover:text-primary'
+                  )}
+                >
+                  <Icon className="h-4 w-4" />
+                  <span>{label}</span>
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }

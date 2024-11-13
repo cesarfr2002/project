@@ -117,7 +117,7 @@ export default function Contact() {
             variant="outline"
             size="lg"
             className="group relative overflow-hidden"
-            onClick={() => window.open('mailto:tucorreo@ejemplo.com')}
+            onClick={() => window.open('mailto:cesar.franco2002@gmail.com')}
           >
             <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
             <Mail className="h-6 w-6 group-hover:scale-110 transition-transform" />
@@ -126,7 +126,7 @@ export default function Contact() {
             variant="outline"
             size="lg"
             className="group relative overflow-hidden"
-            onClick={() => window.open('https://github.com/tuusuario')}
+            onClick={() => window.open('https://github.com/cesarfranco2')}
           >
             <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
             <Github className="h-6 w-6 group-hover:scale-110 transition-transform" />
