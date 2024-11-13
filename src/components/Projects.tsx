@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Github, Award, Calendar, Clock } from 'lucide-react';
+import { Github, Award, Calendar, Clock, Users, Code2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useState } from 'react';
@@ -20,7 +20,19 @@ export default function Projects() {
       duration: '1 mes',
       demoUrl: 'https://example.com/demo', // Ensure this is a valid URL
       githubUrl: 'https://github.com/cesarfr2002/CesarServiceBot/tree/main',
-      isAward: true
+      isAward: true,
+      benefits: {
+        users: [
+          'Respuesta instantánea 24/7 a consultas de clientes',
+          'Resolución más rápida de problemas comunes',
+          'Experiencia personalizada y consistente'
+        ],
+        developers: [
+          'Reducción del 70% en tiempo de desarrollo de integraciones',
+          'Arquitectura escalable y mantenible',
+          'Sistema modular fácil de extender'
+        ]
+      }
     },
     {
       title: 'Beauty AI Assistant',
@@ -31,7 +43,19 @@ export default function Projects() {
       date: '2024-09',
       duration: '1 mes',
       demoUrl: 'https://example.com/demo', // Ensure this is a valid URL
-      githubUrl: '#'
+      githubUrl: '#',
+      benefits: {
+        users: [
+          'Recomendaciones personalizadas de productos',
+          'Análisis facial en tiempo real',
+          'Sugerencias basadas en preferencias personales'
+        ],
+        developers: [
+          'Pipeline de ML optimizado y reutilizable',
+          'Integración flexible con APIs externas',
+          'Arquitectura modular para nuevas características'
+        ]
+      }
     },
     {
       title: 'Weather Time Machine API',
@@ -42,7 +66,19 @@ export default function Projects() {
       date: '2023-09',
       duration: '1 mes',
       demoUrl: 'https://example.com/demo', // Ensure this is a valid URL
-      githubUrl: '#'
+      githubUrl: '#',
+      benefits: {
+        users: [
+          'Acceso a datos históricos precisos',
+          'Predicciones meteorológicas avanzadas',
+          'Visualizaciones intuitivas de datos'
+        ],
+        developers: [
+          'API RESTful bien documentada',
+          'Cache eficiente con Redis',
+          'Fácil integración con sistemas existentes'
+        ]
+      }
     }
   ];
 
@@ -146,6 +182,33 @@ export default function Projects() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-muted-foreground text-lg">{project.description}</p>
+                  
+                  <div className="space-y-4 mt-4">
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 text-primary">
+                        <Users className="h-5 w-5" />
+                        <h4 className="font-semibold">Beneficios para usuarios:</h4>
+                      </div>
+                      <ul className="list-disc list-inside text-sm text-muted-foreground pl-2">
+                        {project.benefits.users.map((benefit, index) => (
+                          <li key={index}>{benefit}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 text-primary">
+                        <Code2 className="h-5 w-5" />
+                        <h4 className="font-semibold">Beneficios técnicos:</h4>
+                      </div>
+                      <ul className="list-disc list-inside text-sm text-muted-foreground pl-2">
+                        {project.benefits.developers.map((benefit, index) => (
+                          <li key={index}>{benefit}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <Tooltip key={tag}>

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { FaPython, FaJava, FaDocker, FaAws } from 'react-icons/fa';
 import { SiDjango, SiFastapi, SiPostgresql } from 'react-icons/si';
+import profileImage from '@/images/elegan.jpeg';
 
 interface HeroProps {
   setActiveSection: (section: string) => void;
@@ -134,6 +135,24 @@ export default function Hero({ setActiveSection }: HeroProps) {
                     <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} ml-1`}>|</span>
                   </span>
                 </h1>
+
+                {/* Add profile image here */}
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                  className="relative w-48 h-48 mx-auto mt-8 mb-6"
+                >
+                  <div className="absolute -inset-1 bg-gradient-to-r from-primary via-blue-600 to-purple-600 rounded-full blur-md opacity-75 animate-rotate-gradient" />
+                  <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background">
+                    <img
+                      src={profileImage}
+                      alt="César Franco"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </motion.div>
+
                 <h2 className="text-3xl md:text-4xl font-semibold text-blue-400">
                   {'{'} Backend Developer {'}'}
                 </h2>
