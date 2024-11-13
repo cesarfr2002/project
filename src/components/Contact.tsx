@@ -61,7 +61,13 @@ export default function Contact() {
                 data-netlify="true"
                 netlify-honeypot="bot-field"
                 className="space-y-6"
-                onSubmit={() => setIsSubmitting(true)}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setIsSubmitting(true);
+                  // El formulario se enviará automáticamente a Netlify
+                  const form = e.target as HTMLFormElement;
+                  form.submit();
+                }}
               >
                 <input type="hidden" name="form-name" value="contact" />
                 <div hidden>
