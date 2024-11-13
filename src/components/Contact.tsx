@@ -24,17 +24,6 @@ export default function Contact() {
 
   return (
     <div className="w-full px-4 max-w-4xl mx-auto py-24">
-      {/* Hidden form for Netlify form detection */}
-      <form
-        name="contact"
-        {...{ netlify: true, 'netlify-honeypot': 'bot-field' }}
-        hidden
-      >
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <textarea name="message"></textarea>
-      </form>
-
       <motion.div
         variants={container}
         initial="hidden"
@@ -69,13 +58,27 @@ export default function Contact() {
               <form
                 name="contact"
                 method="POST"
-                {...{ netlify: true, 'netlify-honeypot': 'bot-field' }}
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
                 className="space-y-6"
                 onSubmit={(e) => {
                   e.preventDefault();
                   setIsSubmitting(true);
                   const form = e.target as HTMLFormElement;
-                  form.submit();
+                  fetch("/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(new FormData(form) as any).toString(),
+                  })
+                    .then(() => {
+                      setIsSubmitting(false);
+                      form.reset();
+                      alert("¡Mensaje enviado con éxito!");
+                    })
+                    .catch((error) => {
+                      setIsSubmitting(false);
+                      alert("Error al enviar el mensaje: " + error);
+                    });
                 }}
               >
                 <input type="hidden" name="form-name" value="contact" />
