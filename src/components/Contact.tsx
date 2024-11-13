@@ -74,45 +74,63 @@ export default function Contact() {
                   <input name="bot-field" />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Input
-                    name="name"
-                    placeholder="Nombre"
-                    className="text-lg py-6 bg-background/50 backdrop-blur-sm"
-                    required
-                  />
-                  <Input
-                    name="email"
-                    type="email"
-                    placeholder="Email"
-                    className="text-lg py-6 bg-background/50 backdrop-blur-sm"
-                    required
-                  />
-                </div>
-                <Textarea
-                  name="message"
-                  placeholder="Mensaje"
-                  className="min-h-[150px] text-lg resize-none bg-background/50 backdrop-blur-sm"
-                  required
-                />
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full text-lg group relative overflow-hidden"
-                  disabled={isSubmitting}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-blue-600 group-hover:from-blue-600 group-hover:to-primary transition-all duration-500" />
-                  <span className="relative z-10 flex items-center justify-center gap-2">
-                    {isSubmitting ? (
-                      "Enviando..."
-                    ) : (
-                      <>
-                        <Send className="h-5 w-5" />
-                        Enviar Mensaje
-                      </>
-                    )}
-                  </span>
-                </Button>
+                <p>
+                  <label>
+                    <span className="sr-only">Nombre</span>
+                    <Input
+                      name="name"
+                      placeholder="Nombre"
+                      className="text-lg py-6 bg-background/50 backdrop-blur-sm"
+                      required
+                    />
+                  </label>
+                </p>
+
+                <p>
+                  <label>
+                    <span className="sr-only">Email</span>
+                    <Input
+                      name="email"
+                      type="email"
+                      placeholder="Email"
+                      className="text-lg py-6 bg-background/50 backdrop-blur-sm"
+                      required
+                    />
+                  </label>
+                </p>
+
+                <p>
+                  <label>
+                    <span className="sr-only">Mensaje</span>
+                    <Textarea
+                      name="message"
+                      placeholder="Mensaje"
+                      className="min-h-[150px] text-lg resize-none bg-background/50 backdrop-blur-sm"
+                      required
+                    />
+                  </label>
+                </p>
+
+                <p>
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full text-lg group relative overflow-hidden"
+                    disabled={isSubmitting}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-blue-600 group-hover:from-blue-600 group-hover:to-primary transition-all duration-500" />
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      {isSubmitting ? (
+                        "Enviando..."
+                      ) : (
+                        <>
+                          <Send className="h-5 w-5" />
+                          Enviar Mensaje
+                        </>
+                      )}
+                    </span>
+                  </Button>
+                </p>
               </form>
             </CardContent>
           </Card>
